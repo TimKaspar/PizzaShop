@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Shop</title>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <script src="jquery-3.5.1.min.js"></script>
+    <link rel="icon" type="image/png" href="/Img/favicon.ico">
+</head>
+
+<body>
+<!-- Grid wrapper for whole Page -->
+<div id="grid">
+
+    <!-- Title-->
+    <h1>Pizza Shop</h1>
+
+    <!-- Pizza Selection -->
+    <!--JS-->
+
+    <!-- Shopping Cart -->
+    <div class="grid-item-shoppingcart">
+        <ul class="cart-wrapper">
+            <li class="cart-header"> Warenkorb</li>
+
+            <form id ="form" class="form">
+                <li id="cart-checkout">
+
+                    <!--JS-->
+                    <br>
+                    <p id="p.address">
+                        <label for="address">Addresse</label>
+                        <input class="orderInput" type="text" id="address" name="address">
+                    </p>
+                    <p id="p.tel">
+                        <label for="tel">Telefon Nummber</label>
+                        <input class="orderInput" type="tel" id="tel" name="tel">
+                    </p>
+                    <button class="button" id="postButton" type="submit" onsubmit="return false">
+                        <span class="nextButton">Bestellen</span>
+                    </button>
+            </form>
+
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

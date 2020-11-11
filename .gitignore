@@ -1,0 +1,15 @@
+# Ignore IDE files 
+.idea
+*.iml
+workspace.xml
+
+.gradle
+build
+target
+out
+container
+logs
+/PizzaShop-back-end/
+.gradle/
+
+
