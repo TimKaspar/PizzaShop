@@ -13,7 +13,43 @@ function addAmount(id) {
         element.value = count + 1;
         console.log("added 1 to " + id);
     }
+    const lang = {
+        de: {
+            "cart": "Wahrenkorb",
+            "address": "Addresse",
+            "tel": "Telefon Nummer",
+            "order": "Bestellen",
+            "ingrediants": {
+                "prosciutto": "",
+                "hawaii": "",
+                "margherita": "",
+                "prosciutto": ""
+            }
+        }
+    }
 }
+
+let txt = {
+    'q': 'Translate this text',
+    'target': 'de'
+}
+
+
+
+let xhttp = new XMLHttpRequest();
+xhttp.open("POST", 'https://translation.googleapis.com/language/translate/v2', true);
+
+//Send the proper header information along with the request
+xhttp.setRequestHeader("Content-Type", "application/json");
+
+xhttp.onreadystatechange = function () { // Call a function when the state changes.
+    if (this.readyState === 4 && this.status === 200) {
+        // Request finished. Do processing here.
+        let json2 = JSON.parse(xhttp.responseText);
+        console.log({json2})
+    }
+}
+xhttp.send(txt);
 
 
 // HTML builder to render HTML more easily
@@ -94,7 +130,7 @@ function showPizzas(pizzas) {
 //add onclick="post()" to "Bestellen" button
 document.getElementById("form").addEventListener("submit", post)
 
-let xhttp = new XMLHttpRequest();
+xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
 
 
@@ -115,79 +151,79 @@ xhttp.send();
 function post(e) {
     //removes all existing error messages (readded later if still no input)
     let errors = document.getElementsByClassName("error");
-    while(errors[0]) {
+    while (errors[0]) {
         errors[0].parentNode.removeChild(errors[0]);
     }
 
 
     e.preventDefault();
     $.getJSON('http://localhost:8080/pizzashop/api/pizza', function (json) {
-        console.log("%s", "Pizza API Json", json[json.length-1].name)
+        console.log("%s", "Pizza API Json", json[json.length - 1].name)
         let jsonObj;
         //execute will be set to false if any of the conditions are not met (input in address,tel and at least 1 pizza)
         let execute = true;
 
-            let pizzaOrders = [];
-            for (let i = 0; i < json.length; i++) {
-                let amount = parseInt(document.getElementById(json[i].name).value);
-                if (!isNaN(amount) && amount !== 0) {
-                    let pizzaOrder = {
-                        pizza: {
-                            id: json[i].id,
-                            name: json[i].name,
-                            price: json[i].price
-                        },
-                        amount: amount
-                    }
-                    pizzaOrders.push(pizzaOrder)
+        let pizzaOrders = [];
+        for (let i = 0; i < json.length; i++) {
+            let amount = parseInt(document.getElementById(json[i].name).value);
+            if (!isNaN(amount) && amount !== 0) {
+                let pizzaOrder = {
+                    pizza: {
+                        id: json[i].id,
+                        name: json[i].name,
+                        price: json[i].price
+                    },
+                    amount: amount
+                }
+                pizzaOrders.push(pizzaOrder)
+            }
+        }
+        jsonObj = {
+            "pizzaOrder": pizzaOrders,
+            "phone": document.getElementById("tel").value,
+            "address": document.getElementById("address").value
+        }
+        console.log("%s", "jsonObj", jsonObj);
+
+        //check if fields are empty
+        if (pizzaOrders.length < 1) {
+            console.log("lastPizza " + "p." + json);
+            let builder = new HTMLBuilder(document.getElementById("p." + json[json.length - 1].name));
+
+            builder.element("div").text("Bitte wählen Sie mindestens eine Pizza aus").attribute("class", "error");
+
+            execute = false;
+        }
+        if (document.getElementById("address").value == "") {
+            let placeholder = document.getElementById("p.address");
+            let builder = new HTMLBuilder(placeholder);
+
+            builder.element("div").text("Bitte geben Sie eine Addresse an").attribute("class", "error");
+            execute = false;
+        }
+        if (document.getElementById("tel").value == "") {
+            let placeholder = document.getElementById("p.tel");
+            let builder = new HTMLBuilder(placeholder);
+
+            builder.element("div").text("Bitte geben Sie eine Telefonnummer an").attribute("class", "error");
+            execute = false;
+        }
+        if (execute) {
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", 'http://localhost:8080/pizzashop/api/order', true);
+
+            //Send the proper header information along with the request
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            xhr.onreadystatechange = function () { // Call a function when the state changes.
+                if (this.readyState === 4 && this.status === 200) {
+                    // Request finished. Do processing here.
+                    let json2 = JSON.parse(xhr.responseText);
+                    console.log({json2})
+                    window.location.href = "../index2.html?id=" + json2.id;
                 }
             }
-            jsonObj = {
-                "pizzaOrder": pizzaOrders,
-                "phone": document.getElementById("tel").value,
-                "address": document.getElementById("address").value
-            }
-            console.log("%s", "jsonObj", jsonObj);
-
-            //check if fields are empty
-            if (pizzaOrders.length < 1) {
-                console.log("lastPizza "+"p."+json);
-                let builder = new HTMLBuilder(document.getElementById("p."+json[json.length-1].name));
-
-                builder.element("div").text("Bitte wählen Sie mindestens eine Pizza aus").attribute("class","error");
-
-                execute = false;
-            }
-            if (document.getElementById("address").value == "") {
-                let placeholder = document.getElementById("p.address");
-                let builder = new HTMLBuilder(placeholder);
-
-                builder.element("div").text("Bitte geben Sie eine Addresse an").attribute("class", "error");
-                execute = false;
-            }
-            if (document.getElementById("tel").value == "") {
-                let placeholder = document.getElementById("p.tel");
-                let builder = new HTMLBuilder(placeholder);
-
-                builder.element("div").text("Bitte geben Sie eine Telefonnummer an").attribute("class", "error");
-                execute = false;
-            }
-            if (execute) {
-                let xhr = new XMLHttpRequest();
-                xhr.open("POST", 'http://localhost:8080/pizzashop/api/order', true);
-
-                //Send the proper header information along with the request
-                xhr.setRequestHeader("Content-Type", "application/json");
-
-                xhr.onreadystatechange = function () { // Call a function when the state changes.
-                    if (this.readyState === 4 && this.status === 200) {
-                        // Request finished. Do processing here.
-                        let json2 = JSON.parse(xhr.responseText);
-                        console.log({json2})
-                        window.location.href = "../index2.html?id=" + json2.id;
-                    }
-                }
-                xhr.send(JSON.stringify(jsonObj));
-            }
+            xhr.send(JSON.stringify(jsonObj));
+        }
     });
 }
