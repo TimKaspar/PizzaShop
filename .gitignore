@@ -9,7 +9,6 @@ target
 out
 container
 logs
-/PizzaShop-back-end/
-.gradle/
+PizzaShop-back-end/.gradle/
 
 
