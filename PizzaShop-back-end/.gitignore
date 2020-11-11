@@ -1,0 +1,18 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+#Build
+build/
+
+#gradle
+.gradle/
+
+#Container
+container/
+
+#DB
+db/
+
+#Lib
+lib/
