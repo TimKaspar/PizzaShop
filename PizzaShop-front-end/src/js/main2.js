@@ -64,12 +64,9 @@ let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
 
 
-    if (this.readyState == 4 && this.status == 200) {
-        var order = JSON.parse(xhttp.responseText);
-        console.log(order.id);
-        console.log(order);
+    if (this.readyState === 4 && this.status === 200) {
+        let order = JSON.parse(xhttp.responseText);
         showOrder(order);
-        //show Json in console
         console.log("Pizza Json received");
     } else if (this.status >= 400) {
         console.log('Error ' + this.status + ': ' + xhttp.responseText);
@@ -77,6 +74,5 @@ xhttp.onreadystatechange = function () {
 };
 let id = location.search;
 id = id.slice(4);
-console.log(id);
 xhttp.open("GET", "http://localhost:8080/pizzashop/api/order/" + id, true);
 xhttp.send();
