@@ -39,7 +39,7 @@ function showOrder(order) {
     let totalPrice = 0;
     let totalAmount = 0;
     if (order) {
-        for (var pizzaOrdering of order.pizzaOrder) {
+        for (let pizzaOrdering of order.pizzaOrder) {
             let pizza = pizzaOrdering.pizza;
             builder.element("img").attribute("class", "grid-item").attribute("src", "../../Img/" + pizzaOrdering.pizza.name + ".jpg").attribute("alt", "Pizza" + pizza.name);
             builder.element("div").attribute("class", "grid-item").text("Pizza " + pizza.name);
