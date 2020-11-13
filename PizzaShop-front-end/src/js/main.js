@@ -53,7 +53,7 @@ class HTMLBuilder {
 
 //render Pizza page as html
 function showPizzas(pizzas) {
-    const ingredints = ["Schinken, Ruccola, Tomaten, Mozorella", "Schinken, Ananas, Tomaten, Mozorella", "Tomaten, Mozorella, Basilikum", "Schinken, Champignon, Tomaten, Mozorella", "Ton, Zwiebeln, \n Tomaten, Mozorella", "Salami, Tomaten, Mozorella"];
+    const ingredients = ["Schinken, Ruccola, Tomaten, Mozorella", "Schinken, Ananas, Tomaten, Mozorella", "Tomaten, Mozorella, Basilikum", "Schinken, Champignon, Tomaten, Mozorella", "Ton, Zwiebeln, \n Tomaten, Mozorella", "Salami, Tomaten, Mozorella"];
 
     //shopping cart
     let placeholder = document.getElementById("form");
@@ -85,7 +85,7 @@ function showPizzas(pizzas) {
             button.element("span").text(pizza.name).attribute("class", "pizzaName");
             button.element("span").text("Zutaten").attribute("class", "ingredients");
             let p_selection = button.element("p");
-            p_selection.element("span").text(ingredints[pizza.id - 1]).attribute("id", "pizzaInfoContent").attribute("class", "ingredients");
+            p_selection.element("span").text(ingredients[pizza.id - 1]).attribute("id", "pizzaInfoContent").attribute("class", "ingredients");
         }
     } else {
         div.text("no Pizzas found");
