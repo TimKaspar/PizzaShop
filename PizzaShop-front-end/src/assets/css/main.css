@@ -2,6 +2,7 @@
 
 html {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../Img/Background.jpg") no-repeat center center fixed;
+    /*background-color: aliceblue;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,9 +12,11 @@ html {
 body {
     margin: 0;
 }
+
 .error{
+    font-weight: bold;
     font-family: Verdana;
-    color: red;
+    color: #f5424e;
     font-size: 80%;
 }
 h1 {
@@ -131,7 +134,7 @@ button:hover .pizzaName {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: last-line;
-    background-color: rgba(252, 127, 87, 0.3);
+    background-color: grey;
     color: aliceblue;
     display: flex;
 }
@@ -189,7 +192,7 @@ input {
     border-radius: 4px;
     background-color: #FFF5F5;
     border: none;
-    color: #fc7f57;
+    color: grey;
     text-align: center;
     font-size: 28px;
     padding: 20px;
