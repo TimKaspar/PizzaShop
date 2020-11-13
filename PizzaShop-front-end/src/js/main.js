@@ -165,11 +165,12 @@ function post(e) {
             execute = false;
         }
         let tel = document.getElementById("tel").value;
-        if (document.getElementById("tel").value == "" || tel.match("^[a-zA-Z]*$")) {
+        let validation = /^\d{10}$/;
+        let validation2 = /^\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{2})[- ]?([0-9]{2})$/;
+        if (document.getElementById("tel").value == "" || (!tel.match(validation) && !tel.match(validation2))) {
             let correct = "";
 
-            if (tel.match("^[a-zA-Z]*$") && tel != ""){
-                console.log("Tel hat alphabetischen zeichen")
+            if (!tel.match(validation) && !tel.match(validation2) && tel != "") {
                 correct = " korrekte ";
             }
             let placeholder = document.getElementById("p.tel");
