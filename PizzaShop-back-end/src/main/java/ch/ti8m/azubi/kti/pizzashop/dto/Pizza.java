@@ -11,6 +11,9 @@ public class Pizza {
     private String name;
     private Double price;
 
+    public Pizza() {
+
+    }
     public Pizza(String name, Double price){
         this.name = name;
         this.price = price;

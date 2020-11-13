@@ -4,9 +4,13 @@ import java.util.Objects;
 
 public class PizzaOrdering{
 
+
     private Pizza pizza;
     private Integer amount;
 
+    public PizzaOrdering(){
+
+    }
 
     public PizzaOrdering(Pizza pizza,Integer amount){
         this.pizza = pizza;
