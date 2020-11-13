@@ -13,43 +13,7 @@ function addAmount(id) {
         element.value = count + 1;
         console.log("added 1 to " + id);
     }
-    const lang = {
-        de: {
-            "cart": "Wahrenkorb",
-            "address": "Addresse",
-            "tel": "Telefon Nummer",
-            "order": "Bestellen",
-            "ingrediants": {
-                "prosciutto": "",
-                "hawaii": "",
-                "margherita": "",
-                "prosciutto": ""
-            }
-        }
-    }
 }
-
-let txt = {
-    'q': 'Translate this text',
-    'target': 'de'
-}
-
-
-
-let xhttp = new XMLHttpRequest();
-xhttp.open("POST", 'https://translation.googleapis.com/language/translate/v2', true);
-
-//Send the proper header information along with the request
-xhttp.setRequestHeader("Content-Type", "application/json");
-
-xhttp.onreadystatechange = function () { // Call a function when the state changes.
-    if (this.readyState === 4 && this.status === 200) {
-        // Request finished. Do processing here.
-        let json2 = JSON.parse(xhttp.responseText);
-        console.log({json2})
-    }
-}
-xhttp.send(txt);
 
 
 // HTML builder to render HTML more easily
