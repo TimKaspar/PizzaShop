@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@700&display=swap');
 
 html {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../../Img/Background.jpg") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../../Img/Background.jpg") no-repeat center center fixed;
     /*background-color: aliceblue;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -134,8 +134,9 @@ button:hover .pizzaName {
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: last-line;
-    background-color: grey;
-    color: aliceblue;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../Img/cart-Background.jpg") no-repeat center center fixed;
+
+    color: grey;
     display: flex;
 }
 
@@ -190,9 +191,9 @@ input {
 /*checkout button*/
 .button {
     border-radius: 4px;
-    background-color: #FFF5F5;
+    background-color: grey;
     border: none;
-    color: grey;
+    color: #FFF5F5;
     text-align: center;
     font-size: 28px;
     padding: 20px;
