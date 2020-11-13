@@ -69,7 +69,7 @@ function showPizzas(pizzas) {
 
         }
     } else {
-        builder.text("no Pizzas found");
+        builder.text("no Pizzas found").attribute("class","error");
     }
 
     // Pizza Selection
@@ -88,7 +88,7 @@ function showPizzas(pizzas) {
             p_selection.element("span").text(ingredients[pizza.id - 1]).attribute("id", "pizzaInfoContent").attribute("class", "ingredients");
         }
     } else {
-        div.text("no Pizzas found");
+        div.text("no Pizzas found").attribute("class","error");
     }
 }
 
