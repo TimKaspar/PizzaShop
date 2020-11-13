@@ -200,7 +200,7 @@ input {
     width: 230px;
     cursor: pointer;
     opacity: 1;
-    margin: 5px;
+    margin: 5px 0;
 }
 
 .button .nextButton {
