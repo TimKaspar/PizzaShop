@@ -6,7 +6,7 @@ class HTMLBuilder {
     }
 
     element(elementName, prepend = false) {
-        var element = document.createElement(elementName);
+        let element = document.createElement(elementName);
         if (prepend) {
             this.node.prepend(element)
         } else {
@@ -60,7 +60,7 @@ function showOrder(order) {
     }
 }
 
-var xhttp = new XMLHttpRequest();
+let xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function () {
 
 
