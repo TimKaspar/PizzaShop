@@ -56,9 +56,10 @@ function showPizzas(pizzas) {
     const ingredints = ["Schinken, Ruccola, Tomaten, Mozorella", "Schinken, Ananas, Tomaten, Mozorella", "Tomaten, Mozorella, Basilikum", "Schinken, Champignon, Tomaten, Mozorella", "Ton, Zwiebeln, \n Tomaten, Mozorella", "Salami, Tomaten, Mozorella"];
 
     //shopping cart
-    let placeholder = document.getElementById("cart-checkout");
+    let placeholder = document.getElementById("form");
     let builder = new HTMLBuilder(placeholder);
 
+    let cart = builder.element("div").attribute("id", "cart-checkout");
     if (pizzas) {
         pizzas.reverse();
         for (let pizza of pizzas) {
@@ -68,7 +69,7 @@ function showPizzas(pizzas) {
 
         }
     } else {
-        div.text("no Pizzas found");
+        builder.text("no Pizzas found");
     }
 
     // Pizza Selection
