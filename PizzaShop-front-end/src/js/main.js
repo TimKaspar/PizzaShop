@@ -149,7 +149,7 @@ function post(e) {
         }
         console.log("%s", "jsonObj", jsonObj);
 
-        //check if fields are empty
+        //input validation
         if (pizzaOrders.length < 1) {
             console.log("lastPizza " + "p." + json);
             let builder = new HTMLBuilder(document.getElementById("p." + json[json.length - 1].name));
@@ -165,13 +165,21 @@ function post(e) {
             builder.element("div").text("Bitte geben Sie eine Addresse an").attribute("class", "error");
             execute = false;
         }
-        if (document.getElementById("tel").value == "") {
+        let tel = document.getElementById("tel").value;
+        if (document.getElementById("tel").value == "" || tel.match("^[a-zA-Z]*$")) {
+            let correct = "";
+
+            if (tel.match("^[a-zA-Z]*$") && tel != ""){
+                console.log("Tel hat alphabetischen zeichen")
+                correct = " korrekte ";
+            }
             let placeholder = document.getElementById("p.tel");
             let builder = new HTMLBuilder(placeholder);
 
-            builder.element("div").text("Bitte geben Sie eine Telefonnummer an").attribute("class", "error");
+            builder.element("div").text("Bitte geben Sie eine"+correct+" Telefonnummer an").attribute("class", "error");
             execute = false;
         }
+
         if (execute) {
             let xhr = new XMLHttpRequest();
             xhr.open("POST", 'http://localhost:8080/pizzashop/api/order', true);
