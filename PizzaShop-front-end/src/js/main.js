@@ -69,7 +69,7 @@ function showPizzas(pizzas) {
 
         }
     } else {
-        builder.text("no Pizzas found").attribute("class","error");
+        builder.text("no Pizzas found").attribute("class", "error");
     }
 
     // Pizza Selection
@@ -88,7 +88,7 @@ function showPizzas(pizzas) {
             p_selection.element("span").text(ingredients[pizza.id - 1]).attribute("id", "pizzaInfoContent").attribute("class", "ingredients");
         }
     } else {
-        div.text("no Pizzas found").attribute("class","error");
+        div.text("no Pizzas found").attribute("class", "error");
     }
 }
 
@@ -103,7 +103,7 @@ xhttp.onreadystatechange = function () {
         let pizzas = JSON.parse(xhttp.responseText);
         showPizzas(pizzas);
         //show Json in console
-        console.log("Pizza Json received");
+        console.log("Pizza Json received : ");
         console.log(pizzas)
     } else if (this.status >= 400) {
         console.log('Error ' + this.status + ': ' + xhttp.responseText);
@@ -177,7 +177,7 @@ function post(e) {
             let placeholder = document.getElementById("p.tel");
             let builder = new HTMLBuilder(placeholder);
 
-            builder.element("div").text("Bitte geben Sie eine"+correct+" Telefonnummer an").attribute("class", "error");
+            builder.element("div").text("Bitte geben Sie eine" + correct + " Telefonnummer an").attribute("class", "error");
             execute = false;
         }
 
