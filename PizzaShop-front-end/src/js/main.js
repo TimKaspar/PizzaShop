@@ -123,7 +123,6 @@ function post(e) {
 
     e.preventDefault();
     $.getJSON('http://localhost:8080/pizzashop/api/pizza', function (json) {
-        console.log("%s", "Pizza API Json", json[json.length - 1].name)
         let jsonObj;
         //execute will be set to false if any of the conditions are not met (input in address,tel and at least 1 pizza)
         let execute = true;
@@ -152,7 +151,6 @@ function post(e) {
 
         //input validation
         if (pizzaOrders.length < 1) {
-            console.log("lastPizza " + "p." + json);
             let builder = new HTMLBuilder(document.getElementById("p." + json[json.length - 1].name));
 
             builder.element("div").text("Bitte wählen Sie mindestens eine Pizza aus").attribute("class", "error");
