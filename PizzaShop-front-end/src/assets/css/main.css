@@ -164,6 +164,9 @@ li {
 p {
     display: table-row;
 }
+/*#p.address{*/
+/*    margin-top: 100px;*/
+/*}*/
 
 label {
     display: table-cell;
