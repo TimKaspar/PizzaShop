@@ -151,9 +151,6 @@ function post(e) {
         //input validation
         if (pizzaOrders.length < 1) {
             let children =document.getElementById("form").children;
-            for(let i=0;i<children.length-3;i++){
-                console.log(children[i].id);
-            }
             let builder = new HTMLBuilder(document.getElementById(children[children.length-4].id)); //-4 due to -3 being the button,address & tel and -1 being the 0 start on array
 
             builder.element("div").text("Bitte wählen Sie mindestens eine Pizza aus").attribute("class", "error");
